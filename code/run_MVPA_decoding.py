@@ -21,6 +21,7 @@ pars = argparse.ArgumentParser()
 
 pars.add_argument('-p','--path', help='Path to data' )
 pars.add_argument('-f','--file', help='Name of input data file' )
+pars.add_argument('-r','--results_path', help='Path for results' )
 pars.add_argument('-par','--parallel', help='Run in parallel', type=int )
 pars.add_argument('-s','--save', help='Save output', type=int )
 pars.add_argument('-d','--decode_method', help='Name of decoding function name' )
@@ -127,10 +128,10 @@ s=ParData['S'][selected_epochs]
 
 # Do classification
 
-if params_decoding['function'] == 'decode_within_SVM': # return pairwise classification accuracy 
+if params_decoding['function'] in ['decode_within_SVM', 'SVM_decode']: # return pairwise classification accuracy 
     results= decode_within_SVM(x, labels, s, params_decoding, parforArg,times)
     
-elif params_decoding['function'] == 'decode_euclidean_dist': # return euclidean distance between condition response patterns
+elif params_decoding['function'] in ['decode_euclidean_dist', 'Euclidean_decode']: # return euclidean distance between condition response patterns
     results= decode_euclidean_dist(x, labels, s, params_decoding, parforArg,times)
     
 else:
@@ -152,4 +153,8 @@ if SaveAll:
     results['out'] = out
     results['results']['out'] = out
 
-    scipy.io.savemat('../Results/'+out, results, do_compression=True)
+    if args.results_path==None:
+        scipy.io.savemat('../Results/'+out, results, do_compression=True)
+    else:
+        scipy.io.savemat(args.results_path+out, results, do_compression=True)
+    
