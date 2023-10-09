@@ -148,7 +148,8 @@ if SaveAll:
 
     out = 'Results_'+ params_decoding['DataName']+'_'+ params_decoding['function']+ timetime_case
 
-    out = out+'_'+params_decoding['Date']+'_'+now+'.mat'
+    #out = out+'_'+params_decoding['Date']+'_'+now+'.mat' # if date & time are wished
+    out = out+'.mat'
 
     results['out'] = out
     results['results']['out'] = out

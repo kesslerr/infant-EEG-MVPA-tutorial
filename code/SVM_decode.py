@@ -153,7 +153,7 @@ def decode_within_SVM(X, Y, S, params, parforArg, times):
     subjects    = np.unique(S)
     nchan       = np.shape(X)[0]
     nt          = np.shape(X)[1] # a.k.a. num. samples
-    L           = params['L']
+    L           = params['L'] # n folds
     nsubj       = len(np.unique(S))
     nperms      = params['num_permutations']
 
