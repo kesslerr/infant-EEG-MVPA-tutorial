@@ -44,6 +44,7 @@ Input data should be in the form of a .mat file containing four structs
 ### Parameters   
   -p --path                Specify path to input data folder, relative or absolute       
   -f --file                Name of input data file    
+  -r --results_path        Optional path for writing results, relative or absolute
   -par --parallel          1 to run in parallel (distributed on multiple cores), 0 to run sequentially (default=1)   
   -s --save                1 to save all decoding output, 0 to run without saving (default=1)   
   -d --decode_method       Name of decoding method function ('SVM_decode' or 'Euclidean_decode')   
